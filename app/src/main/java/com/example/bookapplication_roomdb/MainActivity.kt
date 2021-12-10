@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
+        
+        makeAPICall()
 
         val view = findViewById<RecyclerView>(R.id.resultData)
         val filterBtn = findViewById<Button>(R.id.filterBtn)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         view.layoutManager = LinearLayoutManager(applicationContext)
 
         filterBtn.setOnClickListener(){
-            makeAPICall()
+            
             result.visibility = View.VISIBLE
             myBookViewModel.getBookByAuthor(name.toString()).observe(this,{
                 book -> adapter.setData(book)
